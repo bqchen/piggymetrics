@@ -20,6 +20,8 @@ steps:
     echo Starting the build
     mvn clean package -DskipTests
   displayName: 'Build with Maven'
+- publish: $(System.DefaultWorkingDirectory)/account-service
+  artifact: account-service
   
 # steps:
 #   - script: |
