@@ -20,34 +20,41 @@ steps:
   - script: |
       ls -al
   - script: |
-      docker login -u normanch -p "${pswd}"
-    env:
-      pswd: $(dockerPassword)
-  - script: |
-      cd ./account-service
-      ls -al
-      docker build -t normanch/piggymetrics-account-service .
-  - script: |
-      cd ./auth-service
-      ls -al
-      docker build -t normanch/piggymetrics-auth-service .
-  - script: |
-      cd ./gateway
-      ls -al
-      docker build -t normanch/piggymetrics-gateway .
-  - script: |
-      cd ./notification-service
-      ls -al
-      docker build -t normanch/piggymetrics-notification-service .
-  - script: |
-      cd ./statistics-service
-      ls -al
-      docker build -t normanch/piggymetrics-statistics-service .
-  - script: |
-      docker push normanch/piggymetrics-account-service:latest
-      docker push normanch/piggymetrics-auth-service:latest
-      docker push normanch/piggymetrics-gateway:latest
-      docker push normanch/piggymetrics-notification-service:latest
-      docker push normanch/piggymetrics-statistics-service:latest
-  - script: |
-      docker images
+      artifacts:
+        - from: 'account-service'
+          to: 'account-service'
+          include: 
+            - 'target\**\*'
+
+#   - script: |
+#       docker login -u normanch -p "${pswd}"
+#     env:
+#       pswd: $(dockerPassword)
+#   - script: |
+#       cd ./account-service
+#       ls -al
+#       docker build -t normanch/piggymetrics-account-service .
+#   - script: |
+#       cd ./auth-service
+#       ls -al
+#       docker build -t normanch/piggymetrics-auth-service .
+#   - script: |
+#       cd ./gateway
+#       ls -al
+#       docker build -t normanch/piggymetrics-gateway .
+#   - script: |
+#       cd ./notification-service
+#       ls -al
+#       docker build -t normanch/piggymetrics-notification-service .
+#   - script: |
+#       cd ./statistics-service
+#       ls -al
+#       docker build -t normanch/piggymetrics-statistics-service .
+#   - script: |
+#       docker push normanch/piggymetrics-account-service:latest
+#       docker push normanch/piggymetrics-auth-service:latest
+#       docker push normanch/piggymetrics-gateway:latest
+#       docker push normanch/piggymetrics-notification-service:latest
+#       docker push normanch/piggymetrics-statistics-service:latest
+#   - script: |
+#       docker images
