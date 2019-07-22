@@ -12,19 +12,28 @@ trigger:
 
 pool:
   vmImage: 'ubuntu-latest'
+
 steps:
-  - script: |
-      ls -al
-  - script: |
-      mvn clean package -DskipTests
-  - script: |
-      ls -al
-  - script: |
-      artifacts:
-        - from: 'account-service'
-          to: 'account-service'
-          include: 
-            - 'target\**\*'
+- script: |
+    ls -al
+- script: |
+    echo Starting the build
+    mvn clean package -DskipTests
+  displayName: 'Build with Maven'
+  
+# steps:
+#   - script: |
+#       ls -al
+#   - script: |
+#       mvn clean package -DskipTests
+#   - script: |
+#       ls -al
+#   - script: |
+#       artifacts:
+#         - from: 'account-service'
+#           to: 'account-service'
+#           include: 
+#             - 'target\**\*'
 
 #   - script: |
 #       docker login -u normanch -p "${pswd}"
