@@ -22,6 +22,10 @@ steps:
   displayName: 'Build with Maven'
 - publish: $(System.DefaultWorkingDirectory)/account-service
   artifact: account-service
+- publish: $(System.DefaultWorkingDirectory)/auth-service
+  artifact: auth-service
+- publish: $(System.DefaultWorkingDirectory)/gateway
+  artifact: gateway
   
 # steps:
 #   - script: |
