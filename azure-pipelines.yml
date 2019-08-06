@@ -4,8 +4,8 @@
 # https://docs.microsoft.com/azure/devops/pipelines/languages/java
 # cannot extract pack cache, as it's using a named volume
 
-variables:
-  ArtifactFeed: 6ebc2d9e-a94e-416e-b463-fea4fdb4ffb8
+# variables:
+#   ArtifactFeed: 6ebc2d9e-a94e-416e-b463-fea4fdb4ffb8
 
 trigger:
   - Azure
